@@ -62,7 +62,7 @@ def connect(
     Start CSGO and connect to a specific game server.
     """
     if server_index is None:
-        typer.echo("Please specify either a server index or a server name")
+        typer.echo("Please specify the server index")
         return
 
     if server_index >= 0:
