@@ -40,7 +40,7 @@ def start_csgo():
    # TODO: Start CSGO
    # https://stackoverflow.com/questions/50848226/running-stardew-valley-from-python-on-windows
    # webbrowser.open('steam://rungameid/{}'.format(game['appid']))
-
+   pass
 
 
 @app.command()
@@ -78,6 +78,7 @@ def connect(
         server = data[server_index]
         # TODO: Start CSGO and enter 'server'
         typer.echo(f"Starting CSGO and joining server {server['NAME']} ...")
+        start_csgo()
         return
 
 if __name__ == "__main__":
