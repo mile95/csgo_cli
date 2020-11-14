@@ -36,6 +36,12 @@ def get_data():
     # TODO: Convert IP to CSGO info.
     return data
 
+def start_csgo():
+   # TODO: Start CSGO
+   # https://stackoverflow.com/questions/50848226/running-stardew-valley-from-python-on-windows
+   # webbrowser.open('steam://rungameid/{}'.format(game['appid']))
+
+
 
 @app.command()
 def servers():
