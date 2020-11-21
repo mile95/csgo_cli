@@ -1,3 +1,7 @@
 typer
 setuptools
 tabulate
+python-a2s
+vdf
+typer
+setuptools

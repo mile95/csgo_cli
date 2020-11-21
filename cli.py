@@ -1,45 +1,45 @@
 import typer
+import a2s
+import vdf
+import webbrowser
+import logging
+import socket
+import typer
+import subprocess
 from tabulate import tabulate
 from typing import Optional
 
 app = typer.Typer()
 
-data = [
-    {
-        "NAME":"Retake01",
-        "MAP": "de_dust2",
-        "PLAYERS": 6,
-        "MAX_PLAYERS":10
-    },
-    {
-        "NAME":"Retake02",
-        "MAP": "de_dust2",
-        "PLAYERS": 0,
-        "MAX_PLAYERS":10
-    },
-    {
-        "NAME":"Retake03",
-        "MAP": "de_inferno",
-        "PLAYERS": 2,
-        "MAX_PLAYERS":10
-    },
-    {
-        "NAME":"Retake04",
-        "MAP": "de_mirage",
-        "PLAYERS": 10,
-        "MAX_PLAYERS":10
-    }   
-]
+PATH = "/mnt/c/Program Files (x86)/Steam/userdata/160616678/7/remote/serverbrowser_hist.vdf"
+serverbrowser = vdf.load(open(PATH))
+favorite_servers = serverbrowser['Filters']['Favorites']
 
-def get_data():
-    # TODO: Read game favorite server ips from file.
-    # TODO: Convert IP to CSGO info.
-    return data
 
-def start_csgo():
-   # TODO: Start CSGO
-   # https://stackoverflow.com/questions/50848226/running-stardew-valley-from-python-on-windows
-   # webbrowser.open('steam://rungameid/{}'.format(game['appid']))
+def get_servers():
+    server_infos = []
+    for server in favorite_servers:
+        server = favorite_servers[server]
+        server_ip = server['address'].split(':')[0]
+        server_port = int(server['address'].split(':')[1])
+        address = (server_ip, server_port)
+        try:
+            info = a2s.info(address, timeout=a2s.defaults.DEFAULT_TIMEOUT, encoding=a2s.defaults.DEFAULT_ENCODING)
+            server_info = {
+                "INDEX": len(server_infos),
+                "NAME": info.server_name,
+                "MAP": info.map_name,
+                "PLAYERS": f"{info.player_count}/{info.max_players}",
+                "ADDRESS": f"{server_ip}:{server_port}",
+            }
+            server_infos.append(server_info)
+        except socket.timeout as exp:
+            logging.error(exp)
+    
+    return server_infos
+
+def start_csgo(server_url):
+   webbrowser.open(f'steam://connect/{server_url}')
    pass
 
 
@@ -48,16 +48,11 @@ def servers():
     """
     List your favorite GSGO servers
     """
-    data = get_data()
-    if data == []:
+    servers = get_servers()
+    if servers == {}:
         typer.echo('No registered favorite servers.')
 
-    output = []
-    for index, server in enumerate(data):
-        server['Index'] = index
-        output.append(server)
-
-    table = tabulate(output, headers="keys")
+    table = tabulate(servers, headers="keys")
     typer.echo(f"{table}\n")
 
 @app.command()
@@ -72,13 +67,14 @@ def connect(
         return
 
     if server_index >= 0:
-        if server_index > len(data):
+        servers = get_servers()
+        if server_index > len(servers):
             typer.echo(f"No server with index {server_index} exists.")
             return
-        server = data[server_index]
+        server = servers[server_index]
         # TODO: Start CSGO and enter 'server'
         typer.echo(f"Starting CSGO and joining server {server['NAME']} ...")
-        start_csgo()
+        start_csgo(server['ADDRESS'])
         return
 
 if __name__ == "__main__":
