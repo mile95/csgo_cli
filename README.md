@@ -2,6 +2,8 @@
 
 CLI for starting CSGO and joining one of your favorite servers insanely fast.
 
+Because why not?
+
 # Usage
 
 ![](src/csgo_help.png)
