@@ -24,7 +24,7 @@ def configure(
     if not path:
         typer.echo("Please specify the path.")
         raise typer.Exit(1)
-    
+
     if not Path(path).suffix == ".vdf":
         typer.echo("Not a valid path, must be a .vdf file.")
         raise typer.Exit(1)
@@ -101,8 +101,8 @@ def get_servers():
                 "ADDRESS": f"{server_ip}:{server_port}",
             }
             server_infos.append(server_info)
-        except socket.timeout as exp:
-            logging.error(exp)
+        except socket.timeout:
+            pass
 
     return server_infos
 
