@@ -46,4 +46,4 @@ csgo configure {full_path_to_`serverbrowser_hist.vdf`}
 Everything should now be set, enjoy!
 
 # Contribute?
-Feel free to create issues and PR's!
+Feel free to create issues and PRs!
