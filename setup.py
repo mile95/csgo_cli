@@ -16,6 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
     license="LICENSE",
+    url="https://github.com/mile95/csgo_cli",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
