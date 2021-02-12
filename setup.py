@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setuptools.setup(
     name="csgo-cli",
-    version="0.0.1",
+    version="0.1.1",
     author="Fredrik Mile",
     author_email="fredrik.mile@gmail.com",
     description="CSGO CLI",
