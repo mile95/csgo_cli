@@ -11,13 +11,9 @@ Because why not?
 
 # Current installation
 ```
-git clone https://github.com/mile95/csgo_cli
-cd csgo_cli
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+pip install csgo-cli
 ```
-TODO: Make the CLI available via PyPI.
+
 
 # Setup path to steam user data
 
