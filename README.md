@@ -23,7 +23,7 @@ Because why not?
 Starting CSGO and joining server   BrutalCS - RETAKES ★ 13 ★ MAPVOTE ★ 128T ...
 ````
 
-# Current installation
+# Installation
 ```
 pip install csgo-cli
 ```
