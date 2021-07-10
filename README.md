@@ -11,10 +11,10 @@ Because why not?
 
   INDEX  NAME                                                                        MAP            PLAYERS    ADDRESS
 -------  --------------------------------------------------------------------------  -------------  ---------  -------------------
-    0  BrutalCS - RETAKES ★ 02 ★ MAPVOTE ★ 128T                                    de_train       10/10      178.236.67.18:27015
+    0  BrutalCS - RETAKES ★ 02 ★ MAPVOTE ★ 128T                                    de_train       10/10     178.236.67.18:27015
     1  BrutalCS - RETAKES ★ 04 ★ MAPVOTE ★ 128T                                    de_dust2       2/10      178.236.67.33:27015
     2  BrutalCS - RETAKES ★ 11 ★ MAPVOTE ★ 128T                                    de_mirage      4/10      178.236.67.56:27015
-    3  BrutalCS - RETAKES ★ 13 ★ MAPVOTE ★ 128T                                    de_nuke        0/10      178.236.67.26:27015'
+    3  BrutalCS - RETAKES ★ 13 ★ MAPVOTE ★ 128T                                    de_nuke        0/10      178.236.67.26:27015
 
 
 
